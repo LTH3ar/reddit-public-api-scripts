@@ -29,8 +29,8 @@ def fetch_user_posts(username, target_count, target_subreddit=None):
             response = requests.get(url, headers=HEADERS)
             
             if response.status_code == 429:
-                print("(!) Rate limited. Sleeping 5s...")
-                time.sleep(5)
+                print("(!) Rate limited. Sleeping 6m...")
+                time.sleep(600)
                 continue
             elif response.status_code != 200:
                 print(f"Error {response.status_code}: Could not fetch data.")
@@ -86,7 +86,7 @@ def fetch_user_posts(username, target_count, target_subreddit=None):
                 })
 
             # Sleep to be polite to the API
-            time.sleep(2)
+            time.sleep(3)
             
             if not after_token:
                 break

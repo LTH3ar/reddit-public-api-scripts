@@ -20,8 +20,8 @@ def get_user_details(username):
             data = response.json().get('data')
             return data
         elif response.status_code == 429:
-            print("(!) Too many requests. Sleeping for 10 seconds...")
-            time.sleep(10)
+            print("(!) Too many requests. Sleeping for 6 mins...")
+            time.sleep(600)
             return get_user_details(username) # Retry
     except Exception:
         pass
@@ -67,7 +67,7 @@ def fetch_qualified_users_no_api(subreddit, target_count, min_karma, min_age_day
                 seen_users.add(author_name)
                 
                 # We must sleep slightly between user checks to avoid IP ban
-                time.sleep(1.5) 
+                time.sleep(3) 
                 
                 user_data = get_user_details(author_name)
                 
